@@ -211,25 +211,10 @@
 
             console.log(this.tracker);
 
-            let totalcasesindia = 0;
-            let activecasesindia = 0;
-            let recoveredcasesindia = 0;
-            let totaldeathsindia = 0;
-
-
-
-            for (let i = 0; i < data.length; i++) {
-                totalcasesindia = totalcasesindia + data[i].confirmed;
-
-                activecasesindia = activecasesindia + data[i].active;
-
-                recoveredcasesindia = recoveredcasesindia + data[i].recovered;
-
-                totaldeathsindia = totaldeathsindia + data[i].deaths;
-
-            }
-
-
+            let totalcasesindia = data.reduce((total, item) => total + item.confirmed, 0);
+            let activecasesindia = data.reduce((total, item) => total + item.active, 0);
+            let recoveredcasesindia = data.reduce((total, item) => total + item.recovered, 0);
+            let totaldeathsindia = data.reduce((total, item) => total + item.deaths, 0);
 
 
             document.getElementById('totalcasesindia').innerText = totalcasesindia;
